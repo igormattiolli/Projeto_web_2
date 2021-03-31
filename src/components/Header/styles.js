@@ -91,6 +91,7 @@ export const ContainerButton = styled.div`
   .register {
     background-color: var(--orange-button);
     color: var(--white);
+    margin-right: 0.5rem;
   }
   .login {
     background-color: transparent;

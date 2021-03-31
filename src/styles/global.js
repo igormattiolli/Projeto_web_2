@@ -6,7 +6,10 @@ export const GlobalStyle = createGlobalStyle`
         --orange-writing: #f32404;
         --orange-type2: #f45204;
         --blue-header-desktop: rgba(10,7,66,.9);
+        --blue:#030142;
+        --purple:#140550;
         --white: #fff;
+        --grey:rgba(0,0,0,.7);
     }
 
     *{
