@@ -33,7 +33,6 @@ export const Container = styled.div`
       padding: 1rem;
       border: 0;
       box-shadow: 1;
-      border-radius: 0.25rem;
     }
   }
 `;

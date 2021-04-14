@@ -5,10 +5,10 @@ export const Container = styled.div`
   margin: 0 auto;
   input {
     padding: 0.5rem;
-    border: 1px solid #d7d7d7;
+    border: 1px solid var(--grey-300);
     font-weight: 400;
     font-size: 1rem;
-    background-color: #f0f2f5;
+    background-color: var(--grey-100);
     margin: 1rem;
   }
   button {
@@ -35,13 +35,12 @@ export const Container = styled.div`
       font-weight: 600;
     }
     td {
-      background-color: #f0f2f5;
+      background-color: var(--grey-100);
       color: var(--grey);
       font-weight: 300;
       padding: 1rem;
       border: 0;
       box-shadow: 1;
-      border-radius: 0.25rem;
     }
   }
 `;
