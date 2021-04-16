@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div``;
+export const Container = styled.form``;
 export const ContainerTitle = styled.div`
   background-color: var(--blue);
   height: 256px;
@@ -58,4 +58,11 @@ export const ContainerForm = styled.div`
       color: #4d4d4d;
     }
   }
-`;
+  `;
+
+  export const ErroMessage = styled.p`
+  color: var(--orange-type2);
+  margin: 0 auto;
+  width: 240px;
+  `;
+
