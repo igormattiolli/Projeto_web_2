@@ -1,12 +1,7 @@
-import { Header } from "./components/Header/index";
-import { LookupTable } from "./components/LookupTable";
-import { SearchAnime } from "./components/SearchAnime";
-import { Summary } from "./components/Summary";
 import { GlobalStyle } from "./styles/global";
-import { Register } from "./pages/Register";
 import firebase from "firebase";
 import { useEffect } from "react";
-import { Login } from "./pages/login";
+import Routes from "./Router";
 
 export function App() {
   useEffect(() => {
@@ -24,9 +19,8 @@ export function App() {
   }, []);
   return (
     <>
-    <GlobalStyle/>
-    <Header/>
-    <Login/>
+      <Routes />
+      <GlobalStyle />
     </>
   );
 }

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Container, ContainerButton, ContainerList } from "./styles";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
@@ -29,8 +30,12 @@ export function Header() {
           style={{ marginTop: 7, marginRight: 19 }}
         />
         <div>
-          <button className="register">Cadastre-se</button>
-          <button className="login">Login</button>
+          <Link to="/register">
+            <button className="register">Cadastre-se</button>
+          </Link>
+          <Link to="/login">
+            <button className="login">Login</button>
+          </Link>
         </div>
       </ContainerButton>
     </Container>
