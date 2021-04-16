@@ -6,6 +6,7 @@ import { GlobalStyle } from "./styles/global";
 import { Register } from "./pages/Register";
 import firebase from "firebase";
 import { useEffect } from "react";
+import { Login } from "./pages/login";
 
 export function App() {
   useEffect(() => {
@@ -23,9 +24,9 @@ export function App() {
   }, []);
   return (
     <>
-      <Header />
-      <Register />
-      <GlobalStyle />
+    <GlobalStyle/>
+    <Header/>
+    <Login/>
     </>
   );
 }
