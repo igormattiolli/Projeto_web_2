@@ -1,7 +1,7 @@
 import { Container, ErroMessage } from "./styles";
 import { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { firebase } from "firebase";
+import firebase from "firebase";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -26,17 +26,16 @@ export function Register() {
   });
 
   function onSubmit(data) {
-    console.log(data);
-    // firebase
-    //   .auth()
-    //   .createUserWithEmailAndPassword(data.email, data.password)
-    //   .then((userCredential) => {
-    //     console.log(userCredential.user);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error.code);
-    //     console.log(error.message);
-    //   });
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(data.email, data.password)
+      .then((userCredential) => {
+        console.log(userCredential.user);
+      })
+      .catch((error) => {
+        console.log(error.code);
+        console.log(error.message);
+      });
   }
   return (
     <Container onSubmit={handleSubmit(onSubmit)}>
