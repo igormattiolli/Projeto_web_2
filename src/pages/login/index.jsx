@@ -54,7 +54,7 @@ export function Login() {
           <ContainerTitle>
             <h1>
               Para acompanhar seus investimentos, ter acesso aos nossos produtos
-              e serviços, faça o seu login
+              e serviços, faça o seu login!
             </h1>
           </ContainerTitle>
           <ContainerForm>
