@@ -12,7 +12,7 @@ import firebase from "firebase";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-export function Login() {
+export function Enter() {
   const [isNav, setIsNav] = useState(false);
   const Validator = yup.object().shape({
     email: yup

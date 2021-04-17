@@ -33,7 +33,7 @@ export function Header() {
           <Link to="/register">
             <button className="register">Cadastre-se</button>
           </Link>
-          <Link to="/login">
+          <Link to="/enter">
             <button className="login">Login</button>
           </Link>
         </div>
