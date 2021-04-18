@@ -47,7 +47,7 @@ export function Register() {
       <Container onSubmit={handleSubmit(onSubmit)}>
         <div>
           <h3>Cadastro</h3>
-          <input type="email" placeholder="E-mail" {...register("email")} />
+          <input placeholder="E-mail" {...register("email")} />
           {errors.email?.message ? (
             <ErroMessage>{errors.email?.message}</ErroMessage>
           ) : null}

@@ -58,7 +58,7 @@ export function Enter() {
             </h1>
           </ContainerTitle>
           <ContainerForm>
-            <input type="email" placeholder="E-mail" {...register("email")} />
+            <input placeholder="E-mail" {...register("email")} />
             {errors.email?.message ? (
               <ErroMessage>{errors.email?.message}</ErroMessage>
             ) : null}
