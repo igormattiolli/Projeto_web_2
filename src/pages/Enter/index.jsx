@@ -12,7 +12,7 @@ import firebase from "firebase";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-export function Login() {
+export function Enter() {
   const [isNav, setIsNav] = useState(false);
   const Validator = yup.object().shape({
     email: yup
@@ -54,7 +54,7 @@ export function Login() {
           <ContainerTitle>
             <h1>
               Para acompanhar seus investimentos, ter acesso aos nossos produtos
-              e serviços, faça o seu login
+              e serviços, faça o seu login!
             </h1>
           </ContainerTitle>
           <ContainerForm>
