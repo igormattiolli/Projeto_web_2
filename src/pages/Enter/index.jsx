@@ -8,7 +8,7 @@ import { Header } from "../../components/Header";
 import { Redirect } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import firebase from "firebase";
+import { api } from "../../service/api";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -33,18 +33,18 @@ export function Enter() {
     resolver: yupResolver(Validator),
   });
 
-  function onSubmit(data) {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(data.email, data.password)
-      .then((userCredential) => {
-        setIsNav(true);
-        console.log(userCredential.user);
-      })
-      .catch((error) => {
-        console.log(error.code);
-        console.log(error.message);
-      });
+  async function onSubmit(data) {
+    const userData = {
+      email: data.email,
+      password: data.password,
+    };
+    await api.post("auth/login", { userData }).then((response) => {
+      console.log(response.data);
+      setIsNav(true);
+      if (response.data.success) {
+        localStorage.setItem("token", response.data.token);
+      }
+    });
   }
   return (
     <>
