@@ -1,41 +1,28 @@
 import { Container } from "./styles";
 import { useState } from "react";
-import axios from "axios";
+import { api } from "../../service/api";
 
 export function SearchAnime() {
-  const [animes, setAnimes] = useState([]);
-  const [searchAnime, setSearchAnime] = useState();
-  async function setAnime() {
-    await axios
-      .get(`https://animechan.vercel.app/api/quotes/anime?title=${searchAnime}`)
-      .then((res) => {
-        setAnimes(res.data);
-      });
+  const [users, setUsers] = useState([]);
+  async function setAllUsers() {
+    await api.get("users/list").then((response) => {
+      console.log(response.data);
+      setUsers(response.data)
+    });
   }
   return (
     <Container>
-      <button onClick={setAnime}>Procurar anime</button>
-      <input
-        placeholder="Insira o nome do anime"
-        value={searchAnime}
-        onChange={(event) => {
-          setSearchAnime(event.target.value);
-        }}
-      />
+      <button onClick={setAllUsers}>Listar Usuário</button>
       <table>
         <thead>
           <tr>
-            <th>Anime</th>
-            <th>Personagem</th>
-            <th>Citação</th>
+            <th>Usuário</th>
           </tr>
         </thead>
         <tbody>
-          {animes.map((anime) => (
+          {users.map((user) => (
             <tr>
-              <td>{anime.anime}</td>
-              <td>{anime.character}</td>
-              <td>{anime.quote}</td>
+              <td>{user.email}</td>
             </tr>
           ))}
         </tbody>

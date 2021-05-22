@@ -92,6 +92,7 @@ export const ContainerButton = styled.div`
     background-color: var(--orange-button);
     color: var(--white);
     margin-right: 0.5rem;
+    overflow: hidden;
   }
   .login {
     background-color: transparent;

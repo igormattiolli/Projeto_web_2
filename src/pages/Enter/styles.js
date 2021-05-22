@@ -58,6 +58,12 @@ export const ContainerForm = styled.div`
       color: #4d4d4d;
     }
   }
+
+  p {
+    color: var(--orange-type2);
+    margin: 0 auto;
+    width: 160px;
+  }
   `;
 
   export const ErroMessage = styled.p`

@@ -14,6 +14,7 @@ import * as yup from "yup";
 
 export function Enter() {
   const [isNav, setIsNav] = useState(false);
+  const [messageError, setMessageError] = useState("");
   const Validator = yup.object().shape({
     email: yup
       .string()
@@ -44,6 +45,8 @@ export function Enter() {
       if (response.data.success) {
         localStorage.setItem("token", response.data.token);
       }
+    }).catch(response => {
+      setMessageError("Erro ao logar");
     });
   }
   return (
@@ -70,7 +73,7 @@ export function Enter() {
             {errors.password?.message ? (
               <ErroMessage>{errors.password?.message}</ErroMessage>
             ) : null}
-
+            <p>{messageError}</p>
             <button className="login" type="submit">
               Entrar
             </button>

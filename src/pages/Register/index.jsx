@@ -3,12 +3,13 @@ import { Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Header } from "../../components/Header";
-import firebase from "firebase";
+import { api } from "../../service/api";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 export function Register() {
   const [isNav, setIsNav] = useState(false);
+  const [messageError, setMessageError] = useState("");
   const Validator = yup.object().shape({
     email: yup.string().required("Insira o e-mail").email("E-mail inválido"),
     password: yup
@@ -29,17 +30,15 @@ export function Register() {
   });
 
   async function onSubmit(data) {
-    await firebase
-      .auth()
-      .createUserWithEmailAndPassword(data.email, data.password)
-      .then((userCredential) => {
-        setIsNav(true);
-        console.log(userCredential.user);
-      })
-      .catch((error) => {
-        console.log(error.code);
-        console.log(error.message);
-      });
+    const userData = {
+      email: data.email,
+      password: data.password,
+    };
+    await api.post("users/register", { userData }).then((response) => {
+      setIsNav(true);
+    }).catch(response => {
+      setMessageError("Erro ao Cadastrar");
+    });
   }
   return (
     <>
@@ -67,9 +66,10 @@ export function Register() {
           {errors.confirmPassword?.message ? (
             <ErroMessage>{errors.confirmPassword?.message}</ErroMessage>
           ) : null}
+          <p>{messageError}</p>
           <button type="submit">Enviar</button>
         </div>
-        {isNav ? <Redirect to="/Animes" /> : null}
+        {isNav ? <Redirect to="/enter" /> : null}
       </Container>
     </>
   );

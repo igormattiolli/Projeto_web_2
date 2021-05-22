@@ -37,6 +37,11 @@ export const Container = styled.form`
       margin: auto;
     }
   }
+  p {
+    color: var(--orange-type2);
+    margin: 0 auto;
+    width: 160px;
+  }
 `;
 
 export const ErroMessage = styled.p`

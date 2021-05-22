@@ -4,7 +4,7 @@ import { FiSearch } from "react-icons/fi";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import ricoLogo from "../../assets/imageRicoLogo.png";
 
-export function Header() {
+export function Header({email}) {
   return (
     <Container>
       <ContainerList>
@@ -30,12 +30,15 @@ export function Header() {
           style={{ marginTop: 7, marginRight: 19 }}
         />
         <div>
-          <Link to="/register">
+          { email? <button className="register">{email}</button>:
+          <><Link to="/register">
             <button className="register">Cadastre-se</button>
           </Link>
           <Link to="/enter">
             <button className="login">Login</button>
           </Link>
+          </>
+          }
         </div>
       </ContainerButton>
     </Container>
