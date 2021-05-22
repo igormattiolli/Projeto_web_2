@@ -39,15 +39,17 @@ export function Enter() {
       email: data.email,
       password: data.password,
     };
-    await api.post("auth/login", { userData }).then((response) => {
-      console.log(response.data);
-      setIsNav(true);
-      if (response.data.success) {
-        localStorage.setItem("token", response.data.token);
-      }
-    }).catch(response => {
-      setMessageError("Erro ao logar");
-    });
+    await api
+      .post("auth/login", { userData })
+      .then((response) => {
+        setIsNav(true);
+        if (response.data.success) {
+          localStorage.setItem("token", response.data.token);
+        }
+      })
+      .catch((response) => {
+        setMessageError("Erro ao logar");
+      });
   }
   return (
     <>
@@ -79,7 +81,7 @@ export function Enter() {
             </button>
           </ContainerForm>
         </div>
-        {isNav ? <Redirect to="/Animes" /> : null}
+        {isNav ? <Redirect to="/users" /> : null}
       </Container>
     </>
   );
