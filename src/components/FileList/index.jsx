@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { MdCheckCircle, MdError, MdLink } from "react-icons/md";
 

@@ -61,25 +61,28 @@ export function Users() {
     }
   }, [uploadedFiles, enter]);
 
-  useEffect(async () => {
+  useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
       setIsNav(true);
     }
-    await api
-      .get("auth/verifyToken", {
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `${token}`,
-        },
-      })
-      .then((response) => {
-        setUser(response.data.data);
-      })
-      .catch((response) => {
-        setIsNav(true);
-      });
-  }, []);
+    async function verifyToken() {
+      await api
+        .get("auth/verifyToken", {
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `${token}`,
+          },
+        })
+        .then((response) => {
+          setUser(response.data.data);
+        })
+        .catch((response) => {
+          setIsNav(true);
+        });
+    }
+    verifyToken();
+  }, [isNav]);
 
   function updateFile(id, data, list) {
     const uploadedFile = list.map((uploadedFile) => {
