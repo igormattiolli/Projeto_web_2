@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { Register } from "./pages/Register";
 import { Enter } from "./pages/Enter";
-import { Animes } from "./pages/Animes";
+import { Users } from "./pages/Users";
 import { Home } from "./pages/Home";
 
 export default function Routes() {
@@ -11,7 +11,7 @@ export default function Routes() {
       <Route exact path="/" component={Home} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/enter" component={Enter} />
-      <Route exact path="/animes" component={Animes} />
+      <Route exact path="/users" component={Users} />
     </Router>
   );
 }

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { uniqueId } from "lodash";
 import filesize from "filesize";
 
-import { SearchAnime } from "../../components/SearchAnime";
+import { ListUsers } from "../../components/ListUsers";
 import { Header } from "../../components/Header";
 import { Upload } from "../../components/Upload";
 import { FileList } from "../../components/FileList";
@@ -11,7 +11,7 @@ import { Container } from "./styles";
 import { api } from "../../service/api";
 import { Redirect } from "react-router-dom";
 
-export function Animes() {
+export function Users() {
   const [isNav, setIsNav] = useState(false);
   const [uploadedFiles, setUploadsFile] = useState([]);
   const [enter, setEnter] = useState(false);
@@ -59,22 +59,27 @@ export function Animes() {
       getPosts();
       setEnter(true);
     }
-    // return () => {
-    //   uploadedFiles.forEach((file) => URL.revokeObjectURL(file.preview));
-    // };
   }, [uploadedFiles, enter]);
 
-  useEffect(async() => {
-    const token = localStorage.getItem("token")
-    if(!token){
+  useEffect(async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
       setIsNav(true);
     }
-    await api.get("auth/verifyToken", {headers:{"Content-Type": "application/json", "authorization": `${token}`}}).then((response) => {
-      console.log(response.data);
-      setUser(response.data.data);
-    }).catch(response => {setIsNav(true);
+    await api
+      .get("auth/verifyToken", {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `${token}`,
+        },
+      })
+      .then((response) => {
+        setUser(response.data.data);
+      })
+      .catch((response) => {
+        setIsNav(true);
       });
-  },[]);
+  }, []);
 
   function updateFile(id, data, list) {
     const uploadedFile = list.map((uploadedFile) => {
@@ -133,8 +138,8 @@ export function Animes() {
   return (
     <>
       <Container>
-        <Header email = {user.email}/>
-        <SearchAnime />
+        <Header email={user.email} />
+        <ListUsers />
         <Upload onUpload={handleUpload} />
         {!!uploadedFiles.length && (
           <FileList files={uploadedFiles} onDelete={handleDelete} />
